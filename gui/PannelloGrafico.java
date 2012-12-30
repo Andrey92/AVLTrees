@@ -34,10 +34,12 @@ public class PannelloGrafico extends JPanel {
 	}
 
 	public void disegnaAlbero(AlberoBin<Integer> a) {
-		altezzaAlbero = altezza(a);
-		setPreferredSize(new Dimension(NodoGrafico.WIDTH * Mat.pow(2, altezzaAlbero),
-			(altezzaAlbero + 1) * 3 * NodoGrafico.HEIGHT / 2 + 20));
-		assegnaNodiGrafici(a);
+		if (a != null) {
+			altezzaAlbero = altezza(a);
+			setPreferredSize(new Dimension(NodoGrafico.WIDTH * Mat.pow(2, altezzaAlbero),
+				(altezzaAlbero + 1) * 3 * NodoGrafico.HEIGHT / 2 + 20));
+			assegnaNodiGrafici(a);
+		} else nodiGrafici.clear();
 		repaint();
 		select(null);
 	}
