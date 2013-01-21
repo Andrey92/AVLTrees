@@ -31,6 +31,7 @@ public class GUI extends JFrame {
 		txtInserisci = new JTextField(10);
 		btnInserisci = new JButton("Inserisci");
 		btnRemove = new JButton("Rimuovi");
+		txtInserisci.addActionListener(myListener);
 		btnInserisci.addActionListener(myListener);
 		btnRemove.addActionListener(myListener);
 		lblInfo = new JLabel("<html>Lo scopo del programma è illustrare il funzionamento degli AVL<br>" +
@@ -60,7 +61,7 @@ public class GUI extends JFrame {
 
 	private class MyActionListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
-			if (e.getSource() == btnInserisci) {
+			if (e.getSource() == btnInserisci || e.getSource() == txtInserisci) {
 				if (txtInserisci.getText().equals("")) {
 					JOptionPane.showMessageDialog(null, "Inserire un valore intero!");
 					return;
@@ -80,6 +81,7 @@ public class GUI extends JFrame {
 					return;
 				}
 				avl.inserisci(val);
+				txtInserisci.setText("");
 			} else if (e.getSource() == btnRemove) avl.rimuovi(panel.selected());
 			panel.disegnaAlbero(avl.getRadice());
 		}
